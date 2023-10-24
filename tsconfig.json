@@ -9,7 +9,7 @@
     "forceConsistentCasingInFileNames": true,
     "types": [
       "node",
-      "@types/mongoose"
+//      "@types/mongoose",
     ],
     "strict": true,
     "skipLibCheck": true

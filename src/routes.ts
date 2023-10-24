@@ -1,15 +1,23 @@
-import {Express, Request, Response} from "express";
-import {createUserHandler} from "./controller/user.controller";
-import validateResource from "./middleware/validateResource";
-import {createUserSchema} from "./schema/user.schema";
-
+import { Express, Router } from "express";
+import healthRoutes from "./routes/health.route";
+import userRoutes from "./routes/user.route";
+import sessionRoutes from "./routes/session.route";
+import promptRoutes from "./routes/prompt.route";
+import releaseRoutes from "./routes/releases.route";
+import updateRoutes from "./routes/update.route";
 function routes(app: Express) {
-    app.get('/isTheServerOnline', (req: Request, res: Response) => {
-        res.sendStatus(200);
-    });
+    const apiRouter = Router();
 
-    app.post('/api/users', validateResource(createUserSchema), createUserHandler);
+    // Combine all the routes
+    apiRouter.use('/health', healthRoutes);
+    apiRouter.use('/users', userRoutes);
+    apiRouter.use('/sessions', sessionRoutes);
+    apiRouter.use('/prompts', promptRoutes);
+    apiRouter.use('/releases',releaseRoutes)
+    apiRouter.use('/updates',updateRoutes)
 
+    // Every route in apiRouter will be prefixed with /api
+    app.use('/api', apiRouter);
 }
 
 export default routes;

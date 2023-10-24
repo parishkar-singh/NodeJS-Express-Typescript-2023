@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  heydawbackend:
+    container_name: heydawbackend
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    build:
+        context: ./
+    ports:
+      - 8080:8080

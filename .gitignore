@@ -6,7 +6,10 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+key.pem
+csr.pem
 
+build
 node_modules
 /node_modules/
 .env

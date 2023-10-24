@@ -1,12 +1,18 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import 'dotenv/config'
-
+import crypto from "crypto";
+function generateRandomString(length: number): string {
+    return crypto.randomBytes(Math.ceil(length / 2)).toString('hex').slice(0, length);
+}
 export interface UserInput {
     email: string;
     name: string;
     password: string;
-    projectId?: string;
+    picture?: string;
+    verified?: boolean;
+    passwordResetCode?: string;
+    verificationCode?: string;
 }
 
 // Interface for User
@@ -22,7 +28,11 @@ const userSchema: mongoose.Schema = new mongoose.Schema({
     email: {type: String, required: true, unique: true},
     name: {type: String, required: true},
     password: {type: String, required: true},
-    projectId: {type: String},
+    picture: {type: String},
+    verificationCode: {required:true,type: String,default: () => `${generateRandomString(6)}`},
+    passwordResetCode: {type: String},
+    verified: {type: Boolean, default: false},
+
 
 }, {timestamps: true});
 
@@ -43,5 +53,5 @@ userSchema.methods.comparePassword = async function (candidatePassword: string):
     const user = this as UserDocument;
     return bcrypt.compare(candidatePassword, user.password).catch((e) => false);
 }
-const UserModel = mongoose.model('User', userSchema);
+const UserModel = mongoose.model<UserDocument>('User', userSchema);
 export default UserModel;
