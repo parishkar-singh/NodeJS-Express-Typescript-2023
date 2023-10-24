@@ -1,5 +1,4 @@
 /*
-Endpoints--> server.heydaw.ai | www.server.heydaw.ai
 TechStack->>  Node.js, Typescript, Express, MongoDB
 Deployment--> Docker, Docker-compose, EC2, Nginx, PM2
 *
