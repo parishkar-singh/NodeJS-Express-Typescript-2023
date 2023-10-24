@@ -1,7 +1,8 @@
 
-# Reaper backend
+# NODEJS + EXPRESS BACKEND 2023
 
-This is the backend for the AI music generator app Reaper, Node + Express server written in typescript.
+This is the NodeJS starter pack, Node + Express server written in typescript.
+This is production ready code with all the security features implemented.
 
 
 ## API Reference
@@ -57,5 +58,11 @@ To run this project, you will need to add the following environment variables to
 `REFRESH_TOKEN_TTL='69d'`
 `publickey`
 `privatekey`
-
+`ACCESS_TOKEN_TTL='15m'`
+`REFRESH_TOKEN_TTL='69d'`
+`GOOGLE_CLIENT_ID`
+`GOOGLE_CLIENT_SECRET`
+`GOOGLE_REDIRECT_URL`
+`SMTP_USER`
+`SMTP_PASS`
 
